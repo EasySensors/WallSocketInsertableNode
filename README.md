@@ -1,6 +1,6 @@
 
 
-![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/MiniRelayBox.jpg?raw=true)
+![Mini Relay Box](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/socket_25_03_top.png?raw=true)
 
 # The Mini Relay Box  is a low cost wireless 220 Volts 10A Relay board. It can switch on-off 220 Volts wirelessly. Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. Check Specs below. It can replace this setup:
 
@@ -30,10 +30,11 @@
 
 Arduino Pins|	Description
 ------------|--------------
-A0, A2 |	Available ARDUINO analog GPIO / DIGITAL GPIO 
+A7, A8 |	Available ARDUINO analog GPIO / DIGITAL GPIO 
+D5, D3 |	Available ARDUINO digital GPIO <br> check picture <br> ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/Pins.jpg?raw=true)
+D5 with 200 ohm resistor connector | In case you do not like soldered SK6812mini <br> you may use here regular LED for Relay visulal feedback <br> ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/LEDregular.jpg?raw=true)
 A1 |	connected to ACS712 current sensor
 A3 |	connected to  ATSHA204A
-D5 |	Available ARDUINO digital GPIO
 D6 |	connected to Pixel LED SK6812mini
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 D9 |	connected to RFM69 reset pin
