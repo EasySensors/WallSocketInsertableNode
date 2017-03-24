@@ -15,7 +15,7 @@
  - Dualoptiboot bootloader. Implements over the air (OTA) firmware update ability
  - Pixel LED SK6812mini
  - Regullar LED can be directly connected
- - External button connector with JST  1.25 мм connector
+ - External button connector with JST 1.25 мм connector
  - Supply voltage 160-240 Volts AC
  - The Digital and Analog pins are 3.3 volts
  - Uncompromised Protection:<br>
