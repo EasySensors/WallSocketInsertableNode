@@ -73,7 +73,7 @@ Arduino Pins|	Description
 #define MY_SIGNING_ATSHA204 | Define if you like to use Crypto Authentication to secure your nodes<br> from intruders or interference. After that, you have to “personalize”<br> all the nodes, which have those, defines enabled.<br> [**How to “personalize” nodes with encryption key**](https://github.com/EasySensors/ButtonSizeNode/blob/master/SecurityPersonalizationHowTo.md)
 #define AdafruitNeoPixel | Enables onboard Pixel LED SK6812mini
 
-Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the ButtonSizeNode.ino sketch.
+Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the wallSocketInsertableNode.ino sketch.
 
 **Done**
 
