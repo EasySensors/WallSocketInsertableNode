@@ -2,7 +2,7 @@
 
 ![Mini Relay Box](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/socket_25_03_top.png?raw=true)
 
-# The Mini Relay Box  is a low cost wireless 220 Volts 10A Relay board. It can switch on-off 220 Volts wirelessly. Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. Check Specs below. It can replace this setup:
+# The Wall Socket Insertab leNode  is extremly low profile wireless 220 Volts 10A Relay board.It can go into wall socket compartment in between the socket and the wall.  Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. Check Specs below. It can replace this setup:
 
 ![](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/replace.jpg?raw=true)
 
@@ -35,7 +35,7 @@ D5, D3 |	Available ARDUINO digital GPIO
 Check picture to see both Analog and Digital pins | ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/Pins.jpg?raw=true)
 D5 with 200 ohm resistor connector <br>and A2 as Relay button | In case you do not like soldered SK6812mini <br> you may use here regular LED for Relay visulal feedback <br> ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/LEDregular.jpg?raw=true)
 A1 |	connected to ACS712 current sensor
-A2 |	connected to JST  1.25 мм connector. Used as external relay switch inthe sketch
+A2 |	connected to JST  1.25 мм connector. Used as external relay switch in the sketch
 A3 |	connected to  ATSHA204A
 D6 |	connected to Pixel LED SK6812mini
 D7 |	connected to the 10A Relay
