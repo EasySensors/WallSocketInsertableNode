@@ -2,7 +2,7 @@
 
 ![Mini Relay Box](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/socket_25_03_top.png?raw=true)
 
-# The Wall Socket Insertab leNode  is extremly low profile wireless 220 Volts 10A Relay board.It can go into wall socket compartment in between the socket and the wall.  Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. Check Specs below. It can replace this setup:
+# The Wall Socket Insertab leNode  is extremly low profile wireless 220 Volts 10A Relay board.It can go into wall socket compartment in between the socket and the wall.  Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. One Pixel LED installed and one regullar LED can be connected. External button connector. Check Specs below. It can replace this setup:
 
 ![](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/replace.jpg?raw=true)
 
@@ -14,6 +14,8 @@
  - External JDEC EPROM
  - Dualoptiboot bootloader. Implements over the air (OTA) firmware update ability
  - Pixel LED SK6812mini
+ - Regullar LED can be directly connected
+ - External button connector with JST  1.25 мм connector
  - Supply voltage 160-240 Volts AC
  - The Digital and Analog pins are 3.3 volts
  - Uncompromised Protection:<br>
