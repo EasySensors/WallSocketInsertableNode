@@ -4,7 +4,7 @@
 
 # The Wall Socket Insertable Node  is extremly low profile wireless 220 Volts 10A Relay board. It is suitable for installing into wall socket compartment in between the socket and the wall.  Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. One Pixel LED installed and one regullar LED can be connected. External button connector. Check Specs below. It can replace this setup:
 
-![](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/replace.jpg?raw=true)
+![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/replacee.jpg?raw=true)
 
 ## Specification: ##
  - Authentication security - Atmel ATSHA204A Crypto Authentication Chip
@@ -42,7 +42,7 @@ D6 |	connected to Pixel LED SK6812mini
 D7 |	connected to the 10A Relay
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 D9 |	connected to RFM69 reset pin
-RFM69 antenna |	 ![](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/Antn.jpg?raw=true)
+RFM69 antenna |	 ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/Antn.jpg?raw=true)
 
 
 **Arduino IDE Settings**
