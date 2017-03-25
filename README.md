@@ -33,7 +33,7 @@ Arduino Pins|	Description
 ------------|--------------
 A7, A8 |	Available ARDUINO analog GPIO / DIGITAL GPIO 
 D5, D3 |	Available ARDUINO digital GPIO 
-Check picture to see both Analog and Digital pins | ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/Pins.jpg?raw=true)
+Check picture to see both Analog and Digital pins | ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/PinsShrt.jpg?raw=true)
 D5 with 200 ohm resistor <br>connector and A2 as Relay button | In case you do not like soldered SK6812mini <br> you may use here regular LED for Relay visulal feedback <br> ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/LEDregularTop.jpg?raw=true)
 A1 |	connected to ACS712 current sensor
 A2 |	connected to JST  1.25 мм connector. Used as external relay switch in the sketch <br> ![](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/Button.jpg?raw=true)
