@@ -42,7 +42,7 @@ D6 |	connected to Pixel LED SK6812mini
 D7 |	connected to the 10A Relay
 D8 |	Connected to CS FLASH chip (OTA) M25P40
 D9 |	connected to RFM69 reset pin
-ANT |	RFM69 antenna
+ANT |	RFM69 antenna ![](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/Antn.jpg?raw=true)
 
 
 **Arduino IDE Settings**
