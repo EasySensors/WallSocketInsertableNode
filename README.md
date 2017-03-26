@@ -84,7 +84,7 @@ The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s1.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s5.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s2.jpg)
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg)
 
->[Board schematics Pdf](https://github.com/EasySensors/ButtonSizeNode/blob/master/pdf/ButtonSizeNode_ext1.pdf)
+>[Board schematics Pdf](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pdf/WallInsertableSocket_sch.pdf)
 
 
 
