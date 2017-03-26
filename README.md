@@ -87,3 +87,6 @@ The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s1.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s5.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s2.jpg)
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg)
 
+P.S.
+Always mind! if your Arduino code fails you need some backup plan. Put some candles and matches in your bathroom )))))... hope you understand.  Start your automation wisely. Like auotomate your doghouse first. Then checkenshed and so on!!!
+
