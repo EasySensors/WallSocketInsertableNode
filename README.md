@@ -1,7 +1,7 @@
 
 
-![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode1.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode5.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode2.jpg)
-![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode3.jpg)
+![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode1.jpg?raw=true) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode5.jpg?raw=true) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode2.jpg?raw=true)
+![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/WallSocketInsertableNode3.jpg?raw=true)
 
 
 ### The Wall Socket Insertable Node  is extremly low profile wireless 220 Volts 10A Relay board. It is suitable for installing into wall socket compartment in between the socket and the wall.The board Height is  only 13mm. It is Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW radio on board.  Onboard 220 Volts power supply. Secure athentication with ATSHA204A crypto-authentication. Best suitable for Home Automation, IOT. Current sensor can report power consumption. One Pixel LED installed and one regullar LED can be connected. External button connector. Check Specs below. It can replace this setup:
@@ -81,8 +81,8 @@ Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the w
 
 The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/Koresh)
 
-![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s1.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s5.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s2.jpg)
-![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg)
+![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s1.jpg?raw=true) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s5.jpg?raw=true) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s2.jpg?raw=true)
+![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg?raw=true)
 
 >[The board schematics Pdf link](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pdf/WallInsertableSocket_sch.pdf)
 
