@@ -83,3 +83,7 @@ Connect the Relay to FTDI USB adaptor, Select Pro Mini 8MHz board and burn the w
 ![enter image description here](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/schematic.jpg?raw=true)
 
 The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/Koresh)
+
+![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s1.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s5.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s2.jpg)
+![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg)
+
