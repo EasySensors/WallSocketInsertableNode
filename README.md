@@ -23,7 +23,7 @@
 	Overload varistor<br>
 	Slow fuse<br>
 	Thermal fuse<br>
- - Board Dimensions: Diameter 55mm and Height only 13.5mm
+ - Board Dimensions: Diameter is 55mm and Height is only 13.5mm
  - FTDI  header for programming
 
 
