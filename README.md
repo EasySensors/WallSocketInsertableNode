@@ -84,9 +84,8 @@ The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s1.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s5.jpg) ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s2.jpg)
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg)
 
->[{For schematics lovers Pdf](https://github.com/EasySensors/ButtonSizeNode/blob/master/pdf/ButtonSizeNode_ext1.pdf)
+>[Board schematics Pdf](https://github.com/EasySensors/ButtonSizeNode/blob/master/pdf/ButtonSizeNode_ext1.pdf)
 
-[enter image description here](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/schematic.jpg?raw=true)
 
 
 P.S.
