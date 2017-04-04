@@ -1,10 +1,15 @@
 // Enable debug prints to serial monitor
-//#define MY_DEBUG
+#define MY_DEBUG
 
 #define MY_NODE_ID 100
 //0xF0
 
-#define AdafruitNeoPixel 
+// Type of switch connected to the white JST connector on the board. A2 arduino Pin
+// Momentary is notebook style key.
+//#define MOMENTARY_SWITCH
+
+// Enable  onbaord Pixel LED SK6812mini 
+//#define AdafruitNeoPixel 
 
 #ifdef  AdafruitNeoPixel
 #include <Adafruit_NeoPixel.h>
@@ -25,15 +30,15 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
 #define MY_RFM69_FREQUENCY   RF69_433MHZ
-
 #define MY_IS_RFM69HW
 
-
+//Enable OTA feature
 #define MY_OTA_FIRMWARE_FEATURE
 #define MY_OTA_FLASH_JDECID 0x2020
 
-//#define MY_SIGNING_ATSHA204
-//#define  MY_SIGNING_REQUEST_SIGNATURES
+//Enable Crypto Authentication to secure the node
+#define MY_SIGNING_ATSHA204
+#define  MY_SIGNING_REQUEST_SIGNATURES
 
 #include <MySensors.h>
 #include <SimpleTimer.h>
@@ -80,8 +85,10 @@ void amps()
   char amps_txt[20];
   char temp_txt[10];
   int temp_rfm = (int)_radio.readTemperature(0);
-
+  
+  //It is linear regression for amperes against onboard ACS712 readings
   ACS712amps  = 0.05856*inputStats.sigma() - 0.2126;
+  //convert it to a string
   dtostrf(ACS712amps,0,2,amps_txt);   
   
   if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1){
@@ -100,8 +107,8 @@ void amps()
 }
 
 void before() {
+    // watchdog sets to 8 secs
     wdt_enable(WDTO_8S);     //wdt_disable();
-
     //RFM69 reset pin connected to digital pin 9
     pinMode(9, OUTPUT);  
     digitalWrite(9,LOW);
@@ -111,9 +118,10 @@ void before() {
     delay(10);
     digitalWrite(9,LOW);
     delay(10);
-    // external button with JST connector
+    // External button with JST connector
     pinMode(A2, INPUT_PULLUP);
     digitalWrite(A2,HIGH); 
+    
     // Debouncing the button
     debouncer.attach(A2);
     debouncer.interval(20);
@@ -165,8 +173,8 @@ void loop()
   wdt_reset();
   //Serial.print("RSSI "); Serial.println(_radio.readRSSI());
 
-  #ifdef TACT_SWITCH
-        // read and debounce digitalRead(A2);
+  #ifdef MOMENTARY_SWITCH
+        // read and debounced digitalRead(A2);
         debouncer.update();
         value_ext_sw = debouncer.read();
         if (value_ext_sw == 0 && last_value_ext_sw == 1){ 
@@ -216,7 +224,7 @@ void loop()
   #endif
   
 
-  inputStats.input(analogRead(A1));  // log to Stats function for ampers from A1 analog input
+  inputStats.input(analogRead(A2));  // log to Stats function for ampers from A1 analog input
   timer.run();      
 }
 
