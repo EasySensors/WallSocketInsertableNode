@@ -1,31 +1,8 @@
 // Enable debug prints to serial monitor
-#define MY_DEBUG
+//#define MY_DEBUG
 
-#define MY_NODE_ID 100
+#define MY_NODE_ID 0xF5
 //0xF0
-
-// Type of switch connected to the white JST connector on the board. A2 arduino Pin
-// Momentary is notebook style key.
-//#define MOMENTARY_SWITCH
-
-// Enable  onbaord Pixel LED SK6812mini 
-//#define AdafruitNeoPixel 
-
-#ifdef  AdafruitNeoPixel
-#include <Adafruit_NeoPixel.h>
-// Which pin on the Arduino is connected to the NeoPixels?
-#define PIN 6
-// How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS   1
-#define NEO_PTYPE  NEO_GRB 1
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
-#endif
-
-#include <avr/wdt.h>
-#ifdef __AVR__
-  #include <avr/power.h>
-#endif
-
 
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
@@ -40,15 +17,35 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 #define MY_SIGNING_ATSHA204
 #define  MY_SIGNING_REQUEST_SIGNATURES
 
+// Type of switch connected to the white JST connector on the board. A2 arduino Pin
+// Momentary is notebook style key.
+//#define MOMENTARY_SWITCH
+
+// Enable  onbaord Pixel LED SK6812mini 
+#define AdafruitNeoPixel 
+
+#ifdef  AdafruitNeoPixel
+#include <Adafruit_NeoPixel.h>
+// Which pin on the Arduino is connected to the NeoPixels?
+#define PIN 6
+// How many NeoPixels are attached to the Arduino?
+#define NUMPIXELS   1
+#define NEO_PTYPE  NEO_GRB 1
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+#endif
+
+#include <avr/wdt.h>
+#ifdef  __AVR__
+  #include <avr/power.h>
+#endif
+
 #include <MySensors.h>
-#include <SimpleTimer.h>
 #include <stdlib.h>
 
 //--------------------- https://github.com/JonHub/Filters
 #include <Filters.h> 
 float testFrequency = 50;                     // test signal frequency (Hz)
 float windowLength = 20.0/testFrequency;     // how long to average the signal, for statistist
-
 
 #define RELAY_pin 7 // Digital pin connected to relay
 
@@ -59,7 +56,6 @@ float windowLength = 20.0/testFrequency;     // how long to average the signal, 
 #define RELAY_ON 1  // GPIO value to write to turn on attached relay
 #define RELAY_OFF 0 // GPIO value to write to turn off attached relay
 
-
 //#define SPIFLASH_BLOCKERASE_32K   0x52
 #define SPIFLASH_BLOCKERASE_32K   0xD8 // We redefine erase block and CHIPERASE commands here. so please keep these two lines AFTER #include <MySensors.h>
 #define SPIFLASH_CHIPERASE        0x60
@@ -69,7 +65,6 @@ MyMessage msg_current(Current_sensor, V_CURRENT);
 MyMessage msg_temp(TEMP_sensor, V_TEMP);
 
 RunningStatistics inputStats;                 // create statistics to look at the raw test signal
-SimpleTimer timer;
 
 static uint8_t  value_ext_sw = HIGH, last_value_ext_sw = HIGH;
 static uint8_t  temp_rfmPrevoiusReadings = 0;
@@ -79,7 +74,7 @@ unsigned long wdiDelay2  = 0;
 #include <Bounce2.h>
 Bounce debouncer = Bounce(); 
 
-void amps()
+void reportCurrent()
 {
   float ACS712amps;
   char amps_txt[20];
@@ -94,14 +89,14 @@ void amps()
   if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1){
     //Serial.print( "\tamps_txt: " ); Serial.println( amps_txt );
     //Serial.print( "\tACS712AmpsPrevoiusReadings: " ); Serial.println( ACS712AmpsPrevoiusReadings ); 
-    //Serial.print( "\inputStats.sigma(): " ); Serial.println( inputStats.sigma() ); // sigma variation values of ACS712 value debug print
+    Serial.print( "\inputStats.sigma(): " ); Serial.println( inputStats.sigma() ); // sigma variation values of ACS712 value debug print
     ACS712AmpsPrevoiusReadings = ACS712amps;
     send(msg_current.set(amps_txt), true); // Send new state and request ack back
     wait(30);
     }
-  if (abs(temp_rfmPrevoiusReadings - temp_rfm)>= 1){
+  if (abs(temp_rfmPrevoiusReadings - temp_rfm)>= 3){
     temp_rfmPrevoiusReadings = temp_rfm;
-    //Serial.print( "\tRFM temp: " ); Serial.println( temp_rfm );
+    Serial.print( "\tRFM temp: " ); Serial.println( temp_rfm );
     send(msg_temp.set(temp_rfm), true); // Send RFM module temp sensor readings
     }
 }
@@ -134,7 +129,6 @@ void before() {
     #endif
     
     // Call void amps() to update current and temperature readings.
-    timer.setInterval(6000, amps);
     inputStats.setWindowSecs( windowLength );
     // Then set relay pins in output mode
     pinMode(RELAY_pin, OUTPUT);  
@@ -142,10 +136,8 @@ void before() {
     digitalWrite(RELAY_pin, loadState(RELAY_sensor)?RELAY_ON:RELAY_OFF);
 
     #ifdef  AdafruitNeoPixel
-      noInterrupts();
       pixels.setPixelColor(0,loadState(RELAY_sensor)?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
-      interrupts(); 
     #endif
     //_radio.readAllRegs();
 }
@@ -183,11 +175,9 @@ void loop()
             digitalWrite(RELAY_pin, !loadedState?RELAY_ON:RELAY_OFF);
             
             #ifdef  AdafruitNeoPixel
-              noInterrupts();        
               pixels.setPixelColor(0,!loadedState ?pixels.Color(255,0,0):pixels.Color(0,255,0));
               pixels.show();
               wait(100);
-              interrupts();
             #endif
             
             // Store state into eeprom
@@ -210,11 +200,9 @@ void loop()
           digitalWrite(RELAY_pin, value_ext_sw?RELAY_ON:RELAY_OFF);
 
           #ifdef  AdafruitNeoPixel
-            noInterrupts();        
             pixels.setPixelColor(0,!loadedState ?pixels.Color(255,0,0):pixels.Color(0,255,0));
             pixels.show();
             wait(100);
-            interrupts();
           #endif
           
           // Store state into eeprom
@@ -225,7 +213,16 @@ void loop()
   
 
   inputStats.input(analogRead(A2));  // log to Stats function for ampers from A1 analog input
-  timer.run();      
+  
+  static unsigned long lastCurrentSensorMillis = 0, currentSensorInterval = 5000;
+  // Check if we reach the max millis of 4,294,967,295
+  millis() < lastCurrentSensorMillis ? lastCurrentSensorMillis = 0:0;
+  if (millis() >  (lastCurrentSensorMillis + currentSensorInterval)){
+    lastCurrentSensorMillis = millis();
+    reportCurrent();    
+  }
+
+          
 }
 
 void receive(const MyMessage &message) {
