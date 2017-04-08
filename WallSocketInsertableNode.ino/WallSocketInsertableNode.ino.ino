@@ -1,8 +1,8 @@
 // Enable debug prints to serial monitor
 //#define MY_DEBUG
 
-#define MY_NODE_ID 0xF5
-//0xF0
+// Comment it out for Auto Node ID #
+#define MY_NODE_ID 100 //0xF0
 
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
@@ -18,7 +18,7 @@
 #define  MY_SIGNING_REQUEST_SIGNATURES
 
 // Type of switch connected to the white JST connector on the board. A2 arduino Pin
-// Momentary is notebook style key.
+// Momentary is notebook\laptop keyboard style key.
 //#define MOMENTARY_SWITCH
 
 // Enable  onbaord Pixel LED SK6812mini 
@@ -29,7 +29,7 @@
 // Which pin on the Arduino is connected to the NeoPixels?
 #define PIN 6
 // How many NeoPixels are attached to the Arduino?
-#define NUMPIXELS   1
+#define NUMPIXELS   2
 #define NEO_PTYPE  NEO_GRB 1
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 #endif
@@ -57,7 +57,7 @@ float windowLength = 20.0/testFrequency;     // how long to average the signal, 
 #define RELAY_OFF 0 // GPIO value to write to turn off attached relay
 
 //#define SPIFLASH_BLOCKERASE_32K   0x52
-#define SPIFLASH_BLOCKERASE_32K   0xD8 // We redefine erase block and CHIPERASE commands here. so please keep these two lines AFTER #include <MySensors.h>
+#define SPIFLASH_BLOCKERASE_32K   0xD8 // Redefine erase block and CHIPERASE commands here. so please keep these two lines AFTER #include <MySensors.h>
 #define SPIFLASH_CHIPERASE        0x60
 
 MyMessage msg(RELAY_sensor, V_LIGHT);
@@ -69,7 +69,6 @@ RunningStatistics inputStats;                 // create statistics to look at th
 static uint8_t  value_ext_sw = HIGH, last_value_ext_sw = HIGH;
 static uint8_t  temp_rfmPrevoiusReadings = 0;
 static float ACS712AmpsPrevoiusReadings = 0;
-unsigned long wdiDelay2  = 0;
 
 #include <Bounce2.h>
 Bounce debouncer = Bounce(); 
@@ -86,10 +85,10 @@ void reportCurrent()
   //convert it to a string
   dtostrf(ACS712amps,0,2,amps_txt);   
   
-  if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1){
+  if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1  && ACS712amps > 0){
     //Serial.print( "\tamps_txt: " ); Serial.println( amps_txt );
     //Serial.print( "\tACS712AmpsPrevoiusReadings: " ); Serial.println( ACS712AmpsPrevoiusReadings ); 
-    Serial.print( "\inputStats.sigma(): " ); Serial.println( inputStats.sigma() ); // sigma variation values of ACS712 value debug print
+    //Serial.print( "\inputStats.sigma(): " ); Serial.println( inputStats.sigma() ); // sigma variation values of ACS712 value debug print
     ACS712AmpsPrevoiusReadings = ACS712amps;
     send(msg_current.set(amps_txt), true); // Send new state and request ack back
     wait(30);
@@ -123,7 +122,7 @@ void before() {
 
     #ifdef  AdafruitNeoPixel
       pixels.begin(); // This initializes the NeoPixel library.
-      pixels.setPixelColor(0,pixels.Color(0,0,255)); // R G B 
+      pixels.setPixelColor(1,pixels.Color(0,0,255)); // R G B 
       pixels.setBrightness(50); //0-255
       pixels.show();
     #endif
@@ -136,7 +135,7 @@ void before() {
     digitalWrite(RELAY_pin, loadState(RELAY_sensor)?RELAY_ON:RELAY_OFF);
 
     #ifdef  AdafruitNeoPixel
-      pixels.setPixelColor(0,loadState(RELAY_sensor)?pixels.Color(255,0,0):pixels.Color(0,255,0));
+      pixels.setPixelColor(1,loadState(RELAY_sensor)?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
     #endif
     //_radio.readAllRegs();
@@ -157,8 +156,6 @@ void presentation()
   present(TEMP_sensor, S_TEMP); // RFM 69 Radio have temp sensor. keep this if you like temp reported to a controller
 }
 
-unsigned long wdiDelay  = 0;
-
 void loop()
 {
   boolean loadedState;
@@ -175,7 +172,7 @@ void loop()
             digitalWrite(RELAY_pin, !loadedState?RELAY_ON:RELAY_OFF);
             
             #ifdef  AdafruitNeoPixel
-              pixels.setPixelColor(0,!loadedState ?pixels.Color(255,0,0):pixels.Color(0,255,0));
+              pixels.setPixelColor(1,!loadedState ?pixels.Color(255,0,0):pixels.Color(0,255,0));
               pixels.show();
               wait(100);
             #endif
@@ -200,7 +197,7 @@ void loop()
           digitalWrite(RELAY_pin, value_ext_sw?RELAY_ON:RELAY_OFF);
 
           #ifdef  AdafruitNeoPixel
-            pixels.setPixelColor(0,!loadedState ?pixels.Color(255,0,0):pixels.Color(0,255,0));
+            pixels.setPixelColor(1,!loadedState ?pixels.Color(255,0,0):pixels.Color(0,255,0));
             pixels.show();
             wait(100);
           #endif
@@ -221,8 +218,6 @@ void loop()
     lastCurrentSensorMillis = millis();
     reportCurrent();    
   }
-
-          
 }
 
 void receive(const MyMessage &message) {
@@ -235,11 +230,11 @@ void receive(const MyMessage &message) {
      #ifdef  AdafruitNeoPixel
       wait(100);
       // Blink Blues light to see radio communication with the gateway is 
-      pixels.setPixelColor(0,pixels.Color(0,0,255));
+      pixels.setPixelColor(1,pixels.Color(0,0,255));
       pixels.show();
       wait(100);
       // Set Red for ON and green fo OFF
-      pixels.setPixelColor(0,message.getBool() ?pixels.Color(255,0,0):pixels.Color(0,255,0));
+      pixels.setPixelColor(1,message.getBool() ?pixels.Color(255,0,0):pixels.Color(0,255,0));
       pixels.show();
      #endif
      Serial.print("Incoming change for sensor:");
