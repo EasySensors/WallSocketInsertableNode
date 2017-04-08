@@ -1,6 +1,6 @@
 
 
-### The MiniRelayBox Node (CR22010) is a low cost wireless 220 Volts 10A Relay board. It switches on-off 220 Volts on it's output terminals. Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW 433 MHz radio on board and current sensor. Best sutable for Home Automation, IOT.
+### Wall Socket Insertable Node is extremly low profile wireless 220 Volts 10A Relay board. It switches on-off 220 Volts on it's output terminals. It is suitable for installing into wall socket compartment in between the socket and the wall.The board Height is only 13mm. Comes without plastic enclosure. Arduino IDE compatible (the Atmel ATMega328P) microcontroller with RFM 69 HW 433 MHz radio on board and current sensor. Best sutable for Home Automation, IOT.
 
 
 ## Features
@@ -23,6 +23,9 @@ Comes with Arduino example sketch and guide to IOT, Smarthome ideas.
 ## Overview
 If you are familiar with Arduino boards, the MiniRelayBox Node is Arduino pro Mini with onboard HopeRF RFM69-HW 433 MHz radio, external EPROM flash and crypto authentication chip. Comes with 10A relay and current sensor. To save some board dimensions the MiniRelayBox Node does not have onboard USB-Serial converter. You need to buy FTDI Adapter for programming. HopeRF RFM69-HW provide extremely good range.  hundreds of meters in open area. External Flash chip allows to burn Arduino sketch wirelessly. Onboard Atmel ATSHA204A CryptoAuthentication chip secures communication with other controllers. Some IOT ideas based on the ButtonSize node and similar controllers plus complete specs you may find here [my GitHub page](https://github.com/EasySensors/MiniRelayBox)
 
+![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/WallSocketInsertableNode11.jpg?raw=true)
+![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/WallSocketInsertableNode12.jpg?raw=true)
+![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/WallSocketInsertableNode13.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r5.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r1.jpg?raw=true)
 ![Mini Relay Box](https://github.com/EasySensors/MiniRelayBox/blob/master/pics/r2.jpg?raw=true)
