@@ -3,7 +3,7 @@
 
 ## Features
 - Fully compatible with the Arduino IDE (PRO MINI 8 MG Hz)
-- Flame retardant ABS plastic enclosure dimensions 40x45x20mm
+- Board Dimensions: Diameter is 55mm and Height is only 13mm
 - Uncompromised protection:
    Overload varistor
    Slow fuse
