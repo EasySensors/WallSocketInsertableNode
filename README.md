@@ -50,6 +50,12 @@ RFM69 antenna |	 ![](https://github.com/EasySensors/WallSocketInsertableNode/blo
 
 ![Arduino IDE Settings](https://github.com/EasySensors/ButtonSizeNode/blob/master/pics/IDEsettings.jpg?raw=true)
 
+**programming FTDI adapter connection**
+
+![FTDI Power](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/FTDIvcc3.jpg?raw=true)
+
+
+3.3V power option should be used.
 
 
 How to use it as home automation (IOT) node Relay
@@ -85,8 +91,3 @@ The board is created by  [Koresh](https://www.openhardware.io/user/143/projects/
 ![Wall Socket Insertable Node](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pics/s3.jpg?raw=true)
 
 >[The board schematics Pdf link](https://github.com/EasySensors/WallSocketInsertableNode/blob/master/pdf/WallInsertableSocket_sch.pdf)
-
-
-
-P.S.
-Always mind! if your Arduino code fails you need some backup plan. Put some candles and matches in your bathroom )))))... hope you understand.  Start your automation wisely. Like auotomate your doghouse first. Then checkenshed and so on!!!
