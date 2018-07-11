@@ -31,17 +31,19 @@
 
 // Enable and select radio type attached
 #define MY_RADIO_RFM69
+//#define MY_RFM69_NEW_DRIVER 
 
 // MySensors 2.0
 #define MY_RFM69_FREQUENCY   RF69_433MHZ
 //#define MY_RFM69_FREQUENCY   RF69_868MHZ
 //#define MY_RFM69_FREQUENCY   RF69_915MHZ
 
-// MySensors 2.2
-#define MY_RFM69_NEW_DRIVER 
+
+// MySensors 2.2 and up style 
 //#define MY_RFM69_FREQUENCY RFM69_868MHZ
 //#define MY_RFM69_FREQUENCY RFM69_433MHZ
 //#define MY_RFM69_FREQUENCY RFM69_915MHZ
+
 #define MY_IS_RFM69HW
 
 //Enable OTA feature
@@ -110,6 +112,7 @@ void reportCurrent()
   float ACS712amps;
   char amps_txt[10];
   char temp_txt[10];
+  // The temperature reading is depricated in New RFM 69 driver
   int temp_rfm = (int)_radio.readTemperature(0);
   
   //It is linear regression for amperes against onboard ACS712 sigma eadings
@@ -118,14 +121,16 @@ void reportCurrent()
   dtostrf(ACS712amps,0,2,amps_txt);   
   
   if (abs( (ACS712amps -  ACS712AmpsPrevoiusReadings)) > 0.1  && ACS712amps > 0){
-    ACS712AmpsPrevoiusReadings = ACS712amps;
-    send(msg_current.set(amps_txt), true); // Send new state and request ack back
-    wait(30);
+      ACS712AmpsPrevoiusReadings = ACS712amps;
+      wait(100);
+      send(msg_current.set(amps_txt), true); // Send new state and request ack back
     }
+
   if (abs(temp_rfmPrevoiusReadings - temp_rfm)>= 3){
-    temp_rfmPrevoiusReadings = temp_rfm;
-    Serial.print( "\tRFM temp: " ); Serial.println( temp_rfm );
-    send(msg_temp.set(temp_rfm), true); // Send RFM module temp sensor readings
+      temp_rfmPrevoiusReadings = temp_rfm;
+      Serial.print( "\tRFM temp: " ); Serial.println( temp_rfm );
+      wait(100);
+      send(msg_temp.set(temp_rfm), true); // Send RFM module temp sensor readings
     }
 }
 
@@ -213,7 +218,9 @@ void loop()
             
             // Store state into eeprom
             saveState(RELAY_sensor, !loadedState?RELAY_ON:RELAY_OFF);
-            send(msg.set(!loadedState?true:false), true);
+            // update controller with new relays state
+            msg.setDestination(0); 
+            send(msg.set(!loadedState?RELAY_ON:RELAY_OFF), true);
             last_value_ext_sw = value_ext_sw;
           }
           else {
@@ -238,7 +245,8 @@ void loop()
           
           // Store state into eeprom
           saveState(RELAY_sensor, value_ext_sw?RELAY_ON:RELAY_OFF);
-          send(msg.set(value_ext_sw ?true:false), true);
+          msg.setDestination(0); 
+          send(msg.set(value_ext_sw?RELAY_ON:RELAY_OFF), true);
           }
   #endif
   inputStats.input(analogRead(A1));  // log to Stats function for ampers from A1 analog input
